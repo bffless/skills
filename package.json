@@ -1,0 +1,23 @@
+{
+  "name": "@bffless/claude-skills",
+  "version": "1.0.0",
+  "description": "Claude Code plugin with BFFless platform skills",
+  "keywords": [
+    "claude-code-plugin",
+    "bffless",
+    "skills",
+    "ai",
+    "static-hosting"
+  ],
+  "author": "BFFless",
+  "license": "MIT",
+  "homepage": "https://docs.bffless.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bffless/claude-skills"
+  },
+  "files": [
+    ".claude-plugin/",
+    "skills/"
+  ]
+}

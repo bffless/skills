@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate plugin.json
+        run: |
+          if [ ! -f .claude-plugin/plugin.json ]; then
+            echo "Missing .claude-plugin/plugin.json"
+            exit 1
+          fi
+          echo "plugin.json exists"
+          cat .claude-plugin/plugin.json | python3 -m json.tool > /dev/null
+          echo "plugin.json is valid JSON"
+
+      - name: Validate skills
+        run: |
+          skill_count=0
+          for skill_dir in skills/*/; do
+            if [ ! -f "${skill_dir}SKILL.md" ]; then
+              echo "Missing SKILL.md in ${skill_dir}"
+              exit 1
+            fi
+            # Check frontmatter exists
+            head -1 "${skill_dir}SKILL.md" | grep -q "^---$" || {
+              echo "Missing YAML frontmatter in ${skill_dir}SKILL.md"
+              exit 1
+            }
+            skill_count=$((skill_count + 1))
+          done
+          echo "Validated ${skill_count} skills"

@@ -1,0 +1,22 @@
+{
+  "name": "bffless",
+  "owner": {
+    "name": "BFFless"
+  },
+  "metadata": {
+    "description": "BFFless platform skills for Claude Code",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "bffless",
+      "source": {
+        "source": "npm",
+        "package": "@bffless/claude-skills",
+        "version": "^1.0.0"
+      },
+      "description": "BFFless platform skills — deployments, pipelines, proxy rules, chat, traffic splitting, and more",
+      "category": "platform"
+    }
+  ]
+}
