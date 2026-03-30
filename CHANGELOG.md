@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/bffless/claude-skills/compare/claude-skills-v1.1.1...claude-skills-v1.1.2) (2026-03-30)
+
+
+### Bug Fixes
+
+* plugin ([17121b5](https://github.com/bffless/claude-skills/commit/17121b52922b161cb7232cf514896d87725411fb))
+
 ## [1.1.1](https://github.com/bffless/claude-skills/compare/claude-skills-v1.1.0...claude-skills-v1.1.1) (2026-03-30)
 
 
