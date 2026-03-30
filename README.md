@@ -91,4 +91,4 @@ These are different from **BFFless pipeline skills**, which are markdown files y
 
 ## License
 
-MIT
+[O'Saasy](./LICENSE.md)
