@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/bffless/claude-skills/compare/claude-skills-v1.1.0...claude-skills-v1.1.1) (2026-03-30)
+
+
+### Bug Fixes
+
+* exclude marketplace.json from npm package to prevent infinite recursion ([4d69692](https://github.com/bffless/claude-skills/commit/4d6969293b9bee8054967505f747d4dabe337c2e))
+
 ## [1.1.0](https://github.com/bffless/claude-skills/compare/claude-skills-v1.0.0...claude-skills-v1.1.0) (2026-03-30)
 
 
