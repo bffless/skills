@@ -35,6 +35,24 @@ jobs:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Generate plugin.json for npm package
+        run: |
+          cat > .claude-plugin/plugin.json << 'PLUGIN'
+          {
+            "name": "bffless",
+            "version": "1.0.0",
+            "description": "BFFless platform skills for Claude Code — deployments, pipelines, proxy rules, chat, traffic splitting, and more",
+            "author": {
+              "name": "BFFless"
+            },
+            "homepage": "https://docs.bffless.app",
+            "repository": "https://github.com/bffless/claude-skills",
+            "license": "MIT",
+            "keywords": ["bffless", "static-hosting", "deployments", "pipelines", "chat"],
+            "skills": ["./skills/"]
+          }
+          PLUGIN
+
       - name: Publish to npm
         run: npm publish --access public
         env:
