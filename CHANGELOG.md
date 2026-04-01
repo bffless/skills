@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/bffless/claude-skills/compare/claude-skills-v1.2.1...claude-skills-v1.2.2) (2026-04-01)
+
+
+### Bug Fixes
+
+* remove self-referencing plugin.json from npm package ([f4b8e3a](https://github.com/bffless/claude-skills/commit/f4b8e3a6153a1ee9390c737264030b9c66206d73))
+
 ## [1.2.1](https://github.com/bffless/claude-skills/compare/claude-skills-v1.2.0...claude-skills-v1.2.1) (2026-04-01)
 
 
