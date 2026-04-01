@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.3](https://github.com/bffless/claude-skills/compare/claude-skills-v1.2.2...claude-skills-v1.2.3) (2026-04-01)
+
+
+### Bug Fixes
+
+* prevent plugin.json self-reference loop and use dynamic version ([c960725](https://github.com/bffless/claude-skills/commit/c960725024e9576477eddf61e3ba69a3cc39a96f))
+
 ## [1.2.2](https://github.com/bffless/claude-skills/compare/claude-skills-v1.2.1...claude-skills-v1.2.2) (2026-04-01)
 
 
