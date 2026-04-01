@@ -17,6 +17,7 @@
     "url": "https://github.com/bffless/claude-skills"
   },
   "files": [
+    ".claude-plugin/plugin.json",
     "skills/"
   ]
 }
