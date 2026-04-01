@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/bffless/claude-skills/compare/claude-skills-v1.2.0...claude-skills-v1.2.1) (2026-04-01)
+
+
+### Bug Fixes
+
+* sync marketplace.json version with release-please ([09a0b57](https://github.com/bffless/claude-skills/commit/09a0b57d69e6ede3eed966a851663465283c47a4))
+
 ## [1.2.0](https://github.com/bffless/claude-skills/compare/claude-skills-v1.1.2...claude-skills-v1.2.0) (2026-04-01)
 
 
