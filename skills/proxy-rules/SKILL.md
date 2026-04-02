@@ -13,7 +13,34 @@ Proxy rules forward requests from your static site to backend APIs, eliminating 
 
 **Project defaults**: Apply to all aliases unless overridden
 
-**Alias overrides**: Specific aliases can have different proxy configurations
+**Alias overrides**: Specific aliases can have their own proxy rule sets assigned
+
+## Rule Sets
+
+Proxy rules are organized into **rule sets** — named, reusable groups of rules.
+
+An alias can have **multiple rule sets** attached. When multiple rule sets are assigned, their rules are merged in priority order (first set wins if two sets define the same path+method).
+
+This allows logical grouping, e.g.:
+- `api-proxy` — routes to your backend API
+- `pipelines` — pipeline-based handlers for chat, forms, etc.
+- `auth-proxy` — cookie-to-bearer token transformation
+
+### Assigning Rule Sets to Aliases
+
+Use `update_alias` with `proxyRuleSetIds` (array) to attach one or more rule sets:
+
+```
+update_alias(
+  repository: "owner/repo",
+  alias: "production",
+  proxyRuleSetIds: ["rule-set-id-1", "rule-set-id-2"]
+)
+```
+
+The legacy `proxyRuleSetId` (singular) still works for backwards compatibility but only supports one rule set.
+
+**Important**: After creating proxy rules, you must assign the rule set(s) to an alias for rules to take effect. Rules won't be active until linked to an alias.
 
 ## Rule Structure
 
@@ -75,9 +102,9 @@ With strip prefix OFF:
 
 **Requests not proxying?**
 - Check path pattern matches request URL exactly
-- Verify alias isn't overriding project defaults
+- Verify rule set is assigned to the alias via `update_alias`
 - Confirm target URL is HTTPS and reachable
 
 **Getting CORS errors still?**
-- Ensure the proxy rule is active on the alias being accessed
+- Ensure the proxy rule set is assigned to the alias being accessed
 - Check browser DevTools for actual request URL (may not be hitting proxy)
