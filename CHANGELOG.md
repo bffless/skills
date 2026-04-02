@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/bffless/claude-skills/compare/claude-skills-v1.2.3...claude-skills-v1.3.0) (2026-04-02)
+
+
+### Features
+
+* add missing handler docs to pipelines skill and update proxy-rules ([400dfab](https://github.com/bffless/claude-skills/commit/400dfab54440c5e58a15416864bdd23620447ee6))
+
 ## [1.2.3](https://github.com/bffless/claude-skills/compare/claude-skills-v1.2.2...claude-skills-v1.2.3) (2026-04-01)
 
 
