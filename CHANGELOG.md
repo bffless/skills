@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.2](https://github.com/bffless/claude-skills/compare/claude-skills-v1.5.1...claude-skills-v1.5.2) (2026-04-04)
+
+
+### Bug Fixes
+
+* rename marketplace to bffless-plugins so plugin can be namespaced as bffless ([b34ec53](https://github.com/bffless/claude-skills/commit/b34ec538543d2a2d443af5ddc6d7b67d0bb061e9))
+
 ## [1.5.1](https://github.com/bffless/claude-skills/compare/claude-skills-v1.5.0...claude-skills-v1.5.1) (2026-04-04)
 
 
