@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "bffless-skills",
-      "source": ".",
+      "source": "./plugins/bffless-skills",
       "description": "BFFless platform skills — deployments, pipelines, proxy rules, chat, traffic splitting, and more",
       "category": "platform"
     }

@@ -1,0 +1,13 @@
+{
+  "name": "bffless-skills",
+  "version": "1.5.0",
+  "description": "BFFless platform skills for Claude Code — deployments, pipelines, proxy rules, chat, traffic splitting, and more",
+  "author": {
+    "name": "BFFless"
+  },
+  "homepage": "https://docs.bffless.app",
+  "repository": "https://github.com/bffless/claude-skills",
+  "license": "MIT",
+  "keywords": ["bffless", "static-hosting", "deployments", "pipelines", "chat"],
+  "skills": ["./skills/"]
+}
