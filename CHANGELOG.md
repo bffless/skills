@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/bffless/claude-skills/compare/claude-skills-v1.4.0...claude-skills-v1.4.1) (2026-04-04)
+
+
+### Bug Fixes
+
+* recursive loop ([ebc5ef2](https://github.com/bffless/claude-skills/commit/ebc5ef2344a07161be9a2dc8b040714f0992bcc9))
+
 ## [1.4.0](https://github.com/bffless/claude-skills/compare/claude-skills-v1.3.0...claude-skills-v1.4.0) (2026-04-04)
 
 
