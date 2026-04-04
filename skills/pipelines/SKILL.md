@@ -18,7 +18,7 @@ Pipelines provide backend functionality for static sites without writing server 
 | **Data Query** | `data_query` | Read/list DB records with filters, sorting, pagination |
 | **Data Update** | `data_update` | Update existing DB records |
 | **Data Delete** | `data_delete` | Delete DB records |
-| **Aggregate** | `db_aggregate` | Combine/aggregate data from multiple sources |
+| **Aggregate** | `db_aggregate` | Count/Sum/Avg/Min/Max on data, with optional groupBy for grouped results |
 | **Email** | `email_handler` | Send emails via configured provider |
 | **Response** | `response_handler` | Return custom JSON, status codes, or redirect |
 | **Function** | `function_handler` | Custom JavaScript for transformation/logic |
