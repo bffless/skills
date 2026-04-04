@@ -10,11 +10,7 @@
   "plugins": [
     {
       "name": "bffless-skills",
-      "source": {
-        "source": "npm",
-        "package": "@bffless/claude-skills",
-        "version": "^1.0.0"
-      },
+      "source": ".",
       "description": "BFFless platform skills — deployments, pipelines, proxy rules, chat, traffic splitting, and more",
       "category": "platform"
     }
