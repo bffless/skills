@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/bffless/claude-skills/compare/claude-skills-v1.4.1...claude-skills-v1.4.2) (2026-04-04)
+
+
+### Bug Fixes
+
+* use relative path source instead of npm to prevent recursive caching ([ec8b071](https://github.com/bffless/claude-skills/commit/ec8b071374eaf6df1a8c7beffddbf1462da33f18))
+
 ## [1.4.1](https://github.com/bffless/claude-skills/compare/claude-skills-v1.4.0...claude-skills-v1.4.1) (2026-04-04)
 
 
