@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.3](https://github.com/bffless/claude-skills/compare/claude-skills-v1.5.2...claude-skills-v1.5.3) (2026-04-04)
+
+
+### Bug Fixes
+
+* sync plugin.json version and add to release-please extra-files ([22bfbda](https://github.com/bffless/claude-skills/commit/22bfbda745218a75ea6cd8a846b3a7abc835cfd3))
+
 ## [1.5.2](https://github.com/bffless/claude-skills/compare/claude-skills-v1.5.1...claude-skills-v1.5.2) (2026-04-04)
 
 
