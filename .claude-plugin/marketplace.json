@@ -1,5 +1,5 @@
 {
-  "name": "bffless",
+  "name": "bffless-plugins",
   "owner": {
     "name": "BFFless"
   },
@@ -9,8 +9,8 @@
   },
   "plugins": [
     {
-      "name": "bffless-skills",
-      "source": "./plugins/bffless-skills",
+      "name": "bffless",
+      "source": "./plugins/bffless",
       "description": "BFFless platform skills — deployments, pipelines, proxy rules, chat, traffic splitting, and more",
       "category": "platform"
     }

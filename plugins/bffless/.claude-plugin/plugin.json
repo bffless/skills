@@ -1,5 +1,5 @@
 {
-  "name": "bffless-skills",
+  "name": "bffless",
   "version": "1.5.0",
   "description": "BFFless platform skills for Claude Code — deployments, pipelines, proxy rules, chat, traffic splitting, and more",
   "author": {
