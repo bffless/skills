@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/bffless/claude-skills/compare/claude-skills-v1.5.0...claude-skills-v1.5.1) (2026-04-04)
+
+
+### Bug Fixes
+
+* move plugin into subdirectory to match official plugin structure ([e5bbb59](https://github.com/bffless/claude-skills/commit/e5bbb59119ceef3e290973fa24359a6c0e2f4f28))
+
 ## [1.5.0](https://github.com/bffless/claude-skills/compare/claude-skills-v1.4.2...claude-skills-v1.5.0) (2026-04-04)
 
 
