@@ -9,7 +9,7 @@
   },
   "plugins": [
     {
-      "name": "bffless",
+      "name": "bffless-skills",
       "source": {
         "source": "npm",
         "package": "@bffless/claude-skills",
