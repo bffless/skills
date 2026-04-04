@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/bffless/claude-skills/compare/claude-skills-v1.3.0...claude-skills-v1.4.0) (2026-04-04)
+
+
+### Features
+
+* adds group to aggregate ([7ab9a8c](https://github.com/bffless/claude-skills/commit/7ab9a8cf390ee89ca6c292331951800abc237a75))
+
 ## [1.3.0](https://github.com/bffless/claude-skills/compare/claude-skills-v1.2.3...claude-skills-v1.3.0) (2026-04-02)
 
 
