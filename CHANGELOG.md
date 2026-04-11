@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/bffless/claude-skills/compare/claude-skills-v1.5.3...claude-skills-v1.6.0) (2026-04-11)
+
+
+### Features
+
+* adds cache and use-bff-state skills ([22db53a](https://github.com/bffless/claude-skills/commit/22db53ac595c1a0042df60b35e4d012e1d24ad02))
+
 ## [1.5.3](https://github.com/bffless/claude-skills/compare/claude-skills-v1.5.2...claude-skills-v1.5.3) (2026-04-04)
 
 
