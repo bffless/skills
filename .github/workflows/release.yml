@@ -35,17 +35,6 @@ jobs:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Generate plugin.json for npm package
-        run: |
-          VERSION=$(node -p "require('./package.json').version")
-          cat > .claude-plugin/plugin.json << PLUGIN
-          {
-            "version": "$VERSION",
-            "description": "BFFless platform skills for Claude Code — deployments, pipelines, proxy rules, chat, traffic splitting, and more",
-            "skills": ["./skills/"]
-          }
-          PLUGIN
-
       - name: Publish to npm
         run: npm publish --access public
         env:

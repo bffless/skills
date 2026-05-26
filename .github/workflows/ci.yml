@@ -13,23 +13,39 @@ jobs:
 
       - name: Validate plugin.json
         run: |
-          if [ ! -f .claude-plugin/plugin.json ]; then
-            echo "Missing .claude-plugin/plugin.json"
+          PLUGIN_JSON=plugins/bffless/.claude-plugin/plugin.json
+          if [ ! -f "$PLUGIN_JSON" ]; then
+            echo "Missing $PLUGIN_JSON"
             exit 1
           fi
-          echo "plugin.json exists"
-          cat .claude-plugin/plugin.json | python3 -m json.tool > /dev/null
-          echo "plugin.json is valid JSON"
+          echo "$PLUGIN_JSON exists"
+          cat "$PLUGIN_JSON" | python3 -m json.tool > /dev/null
+          echo "$PLUGIN_JSON is valid JSON"
+
+      - name: Validate marketplace.json
+        run: |
+          MARKETPLACE_JSON=.claude-plugin/marketplace.json
+          if [ ! -f "$MARKETPLACE_JSON" ]; then
+            echo "Missing $MARKETPLACE_JSON"
+            exit 1
+          fi
+          cat "$MARKETPLACE_JSON" | python3 -m json.tool > /dev/null
+          echo "$MARKETPLACE_JSON is valid JSON"
 
       - name: Validate skills
         run: |
+          shopt -s nullglob
           skill_count=0
-          for skill_dir in skills/*/; do
+          skill_dirs=(plugins/bffless/skills/*/)
+          if [ ${#skill_dirs[@]} -eq 0 ]; then
+            echo "No skills found in plugins/bffless/skills/"
+            exit 1
+          fi
+          for skill_dir in "${skill_dirs[@]}"; do
             if [ ! -f "${skill_dir}SKILL.md" ]; then
               echo "Missing SKILL.md in ${skill_dir}"
               exit 1
             fi
-            # Check frontmatter exists
             head -1 "${skill_dir}SKILL.md" | grep -q "^---$" || {
               echo "Missing YAML frontmatter in ${skill_dir}SKILL.md"
               exit 1
