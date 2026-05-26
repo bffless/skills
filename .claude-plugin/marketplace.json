@@ -4,7 +4,7 @@
     "name": "BFFless"
   },
   "metadata": {
-    "description": "BFFless platform skills for Claude Code",
+    "description": "BFFless platform skills",
     "version": "1.6.0"
   },
   "plugins": [

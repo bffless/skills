@@ -1,15 +1,19 @@
-# @bffless/claude-skills
+# @bffless/skills
 
-Claude Code plugin with platform skills for [BFFless](https://bffless.app) — a self-hosted static asset hosting platform with AI-powered pipelines.
+Agent skills for [BFFless](https://bffless.app) — a self-hosted static asset hosting platform with AI-powered pipelines.
 
-These skills give Claude Code domain knowledge about BFFless features so it can help you build, deploy, and configure your projects.
+These skills give your AI coding agent domain knowledge about BFFless features so it can help you build, deploy, and configure your projects.
+
+Originally built as a Claude Code plugin, the skills are plain markdown and also work with the open-source [`skills`](https://www.npmjs.com/package/skills) CLI — so you can install them into any agent that reads skill files from your project.
 
 ## Skills Included
 
 | Skill                 | Description                                              |
 | --------------------- | -------------------------------------------------------- |
+| **authentication**    | Cross-domain auth, login relay, cookie sessions          |
 | **authorization**     | Global and project roles, API keys, permission model     |
 | **bffless**           | Platform overview, key concepts, and feature summary     |
+| **cache-and-storage** | Cache rules, storage backends, API keys for CI/CD        |
 | **chat**              | AI chat widget/full-page, skills, streaming, persistence |
 | **pipelines**         | Backend automation with handler chains and DB Records    |
 | **proxy-rules**       | Forward requests to backend APIs, eliminate CORS         |
@@ -17,44 +21,62 @@ These skills give Claude Code domain knowledge about BFFless features so it can 
 | **share-links**       | Token-based sharing for private deployments              |
 | **traffic-splitting** | A/B testing, canary deployments, weighted routing        |
 | **upload-artifact**   | GitHub Action for uploading builds to BFFless            |
+| **use-bff-state**     | React hook for server-side state with Data Tables        |
 
 ## Install
 
-### Via Claude Code Plugin Marketplace
+### Claude Code (plugin marketplace)
 
 ```bash
 # Add the marketplace
-/plugin marketplace add bffless/claude-skills
+/plugin marketplace add bffless/skills
 
 # Install the plugin
 /plugin install bffless
 ```
 
-### Via CLI
+Or via CLI:
 
 ```bash
 claude plugin install bffless --scope user
 ```
 
-### Local Development
+### Any agent (via `npx skills`)
 
-If you're contributing or want to use a local copy:
+The same skills repo works with the open-source [`skills`](https://www.npmjs.com/package/skills) CLI:
 
 ```bash
-git clone https://github.com/bffless/claude-skills.git
-claude --plugin-dir ./claude-skills
+# List available skills
+npx skills add bffless/skills --list
+
+# Install all skills into your project
+npx skills add bffless/skills
+
+# Install a specific skill
+npx skills add bffless/skills --skill chat
+```
+
+This clones the repo and copies the selected skill files into your project so any compatible agent can read them.
+
+### Local Development
+
+If you're contributing or want to use a local copy with Claude Code:
+
+```bash
+git clone https://github.com/bffless/skills.git
+claude --plugin-dir ./skills
 ```
 
 ## Usage
 
-Once installed, Claude Code automatically uses these skills when you ask about BFFless features. For example:
+Once installed, your agent automatically uses these skills when you ask about BFFless features. For example:
 
 - "Set up a proxy rule to forward /api requests to my backend"
 - "Add AI chat to my site with streaming"
 - "Configure traffic splitting for a canary deployment"
 - "Set up the upload-artifact GitHub Action for my repo"
 
-Skills are invoked by name with the `bffless` namespace:
+In Claude Code, skills are invoked by name with the `bffless` namespace:
 
 ```
 /bffless:chat
@@ -62,30 +84,31 @@ Skills are invoked by name with the `bffless` namespace:
 /bffless:pipelines
 ```
 
-## BFFless Pipeline Skills vs Claude Code Skills
+## Developer Skills vs BFFless Pipeline Skills
 
-This package contains **Claude Code plugin skills** — they teach Claude about the BFFless platform so it can assist you as a developer.
+This package contains **developer-facing agent skills** — they teach your coding agent about the BFFless platform so it can assist you while you build.
 
 These are different from **BFFless pipeline skills**, which are markdown files you create in your own project's `.bffless/skills/` directory. Pipeline skills are deployed with your site and loaded by the AI chat handler at runtime to give your chatbot domain-specific knowledge.
 
-|              | Claude Code Skills (this package)       | Pipeline Skills (your project)          |
+|              | Developer Skills (this package)         | Pipeline Skills (your project)          |
 | ------------ | --------------------------------------- | --------------------------------------- |
-| **Purpose**  | Help Claude help _you_ build on BFFless | Give _your chatbot_ domain knowledge    |
-| **Location** | Installed as Claude Code plugin         | `.bffless/skills/` in your project repo |
-| **Used by**  | Claude Code (your dev tool)             | BFFless AI chat handler (your users)    |
-| **Deployed** | npm install                             | `bffless/upload-artifact` GitHub Action |
+| **Purpose**  | Help your agent help _you_ build on BFFless | Give _your chatbot_ domain knowledge |
+| **Location** | Installed via Claude Code plugin or `npx skills` | `.bffless/skills/` in your project repo |
+| **Used by**  | Your coding agent (your dev tool)       | BFFless AI chat handler (your users)    |
+| **Deployed** | npm / `skills` CLI                      | `bffless/upload-artifact` GitHub Action |
 
 ## Documentation
 
 - [BFFless Docs](https://docs.bffless.app)
 - [Getting Started](https://docs.bffless.app/getting-started/quickstart)
+- [Skills](https://docs.bffless.app/features/claude-code-plugin)
 - [Chat Feature](https://docs.bffless.app/features/chat/)
 - [Pipelines](https://docs.bffless.app/features/pipelines/)
 
 ## Contributing
 
 1. Fork this repo
-2. Add or update skills in `skills/<skill-name>/SKILL.md`
+2. Add or update skills in `plugins/bffless/skills/<skill-name>/SKILL.md`
 3. Each skill needs YAML frontmatter with `name` and `description`
 4. Open a PR — CI validates all skills automatically
 

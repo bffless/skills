@@ -1,11 +1,12 @@
 {
-  "name": "@bffless/claude-skills",
+  "name": "@bffless/skills",
   "version": "1.6.0",
-  "description": "Claude Code plugin with BFFless platform skills",
+  "description": "BFFless platform skills — usable with Claude Code or any agent via the `skills` CLI",
   "keywords": [
+    "skills",
+    "agent-skills",
     "claude-code-plugin",
     "bffless",
-    "skills",
     "ai",
     "static-hosting"
   ],
@@ -14,7 +15,7 @@
   "homepage": "https://docs.bffless.app",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bffless/claude-skills"
+    "url": "https://github.com/bffless/skills"
   },
   "files": [
     ".claude-plugin/plugin.json",

@@ -6,16 +6,8 @@
     "name": "BFFless"
   },
   "homepage": "https://docs.bffless.app",
-  "repository": "https://github.com/bffless/claude-skills",
-  "license": "MIT",
-  "keywords": [
-    "bffless",
-    "static-hosting",
-    "deployments",
-    "pipelines",
-    "chat"
-  ],
-  "skills": [
-    "./skills/"
-  ]
+  "repository": "https://github.com/bffless/skills",
+  "license": "O'Saasy",
+  "keywords": ["bffless", "static-hosting", "deployments", "pipelines", "chat"],
+  "skills": ["./skills/"]
 }
