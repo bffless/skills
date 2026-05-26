@@ -1,6 +1,6 @@
 {
   "name": "bffless",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "BFFless platform skills for Claude Code — deployments, pipelines, proxy rules, chat, traffic splitting, and more",
   "author": {
     "name": "BFFless"
@@ -8,6 +8,14 @@
   "homepage": "https://docs.bffless.app",
   "repository": "https://github.com/bffless/skills",
   "license": "O'Saasy",
-  "keywords": ["bffless", "static-hosting", "deployments", "pipelines", "chat"],
-  "skills": ["./skills/"]
+  "keywords": [
+    "bffless",
+    "static-hosting",
+    "deployments",
+    "pipelines",
+    "chat"
+  ],
+  "skills": [
+    "./skills/"
+  ]
 }

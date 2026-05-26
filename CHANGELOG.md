@@ -1,5 +1,72 @@
 # Changelog
 
+## [1.7.0](https://github.com/bffless/skills/compare/skills-v1.6.0...skills-v1.7.0) (2026-05-26)
+
+
+### Features
+
+* add missing handler docs to pipelines skill and update proxy-rules ([400dfab](https://github.com/bffless/skills/commit/400dfab54440c5e58a15416864bdd23620447ee6))
+* adds auth skill ([ddc1e68](https://github.com/bffless/skills/commit/ddc1e68db7bd89cef8c135453837022a0db4fc48))
+* adds cache and use-bff-state skills ([22db53a](https://github.com/bffless/skills/commit/22db53ac595c1a0042df60b35e4d012e1d24ad02))
+* adds group to aggregate ([7ab9a8c](https://github.com/bffless/skills/commit/7ab9a8cf390ee89ca6c292331951800abc237a75))
+* initial commit ([b31c713](https://github.com/bffless/skills/commit/b31c7133ea4ceeed33b8ab484a0ac588ac57203e))
+* renames claude-skills to skills ([bd4e8ee](https://github.com/bffless/skills/commit/bd4e8eefbdc87d80c1546ef78817881a3b7c9168))
+
+
+### Bug Fixes
+
+* ci ([b3affaf](https://github.com/bffless/skills/commit/b3affaf563cfd188745872c65bdc899400081042))
+* exclude marketplace.json from npm package to prevent infinite recursion ([4d69692](https://github.com/bffless/skills/commit/4d6969293b9bee8054967505f747d4dabe337c2e))
+* license ([f22bfe3](https://github.com/bffless/skills/commit/f22bfe3c52894ab56521d3eb2182d11371a19fd9))
+* move plugin into subdirectory to match official plugin structure ([e5bbb59](https://github.com/bffless/skills/commit/e5bbb59119ceef3e290973fa24359a6c0e2f4f28))
+* plugin ([17121b5](https://github.com/bffless/skills/commit/17121b52922b161cb7232cf514896d87725411fb))
+* prevent plugin.json self-reference loop and use dynamic version ([c960725](https://github.com/bffless/skills/commit/c960725024e9576477eddf61e3ba69a3cc39a96f))
+* recursive loop ([ebc5ef2](https://github.com/bffless/skills/commit/ebc5ef2344a07161be9a2dc8b040714f0992bcc9))
+* remove self-referencing plugin.json from npm package ([f4b8e3a](https://github.com/bffless/skills/commit/f4b8e3a6153a1ee9390c737264030b9c66206d73))
+* rename marketplace to bffless-plugins so plugin can be namespaced as bffless ([b34ec53](https://github.com/bffless/skills/commit/b34ec538543d2a2d443af5ddc6d7b67d0bb061e9))
+* sync marketplace.json version with release-please ([09a0b57](https://github.com/bffless/skills/commit/09a0b57d69e6ede3eed966a851663465283c47a4))
+* sync plugin.json version and add to release-please extra-files ([22bfbda](https://github.com/bffless/skills/commit/22bfbda745218a75ea6cd8a846b3a7abc835cfd3))
+* tighten local-dev instructions wording in README ([b248fa8](https://github.com/bffless/skills/commit/b248fa8c89682251812d668708fe14a22323a47a))
+* tighten local-dev instructions wording in README ([1ee271e](https://github.com/bffless/skills/commit/1ee271e09737a3a0609b2b635de10d9499cc642b))
+* use relative path source instead of npm to prevent recursive caching ([ec8b071](https://github.com/bffless/skills/commit/ec8b071374eaf6df1a8c7beffddbf1462da33f18))
+
+
+### Miscellaneous
+
+* **main:** release claude-skills 1.1.0 ([005fc7a](https://github.com/bffless/skills/commit/005fc7a3454627d5e6c4ec1933a3aa0058fb8f6b))
+* **main:** release claude-skills 1.1.0 ([31d2147](https://github.com/bffless/skills/commit/31d2147f7d2dd29e7643c6bc6a21b828edb8a9b3))
+* **main:** release claude-skills 1.1.1 ([9d0f166](https://github.com/bffless/skills/commit/9d0f166295862f92e49db2530dbe240c3a84a5a6))
+* **main:** release claude-skills 1.1.1 ([dbb3e48](https://github.com/bffless/skills/commit/dbb3e484ad764f67e4b793d810191d77c08ca30c))
+* **main:** release claude-skills 1.1.2 ([4ae4d8c](https://github.com/bffless/skills/commit/4ae4d8cf8837b64c8df3cb9cf7bfb2c21d3b6e7b))
+* **main:** release claude-skills 1.1.2 ([7f60591](https://github.com/bffless/skills/commit/7f60591428fac9dcdeb069fcffdb66c59a43d9a3))
+* **main:** release claude-skills 1.2.0 ([f8dae4d](https://github.com/bffless/skills/commit/f8dae4db030a90fce1ac3044a916e06741f26058))
+* **main:** release claude-skills 1.2.0 ([6e2f78c](https://github.com/bffless/skills/commit/6e2f78c0d757866918e273d33a66ae265be31734))
+* **main:** release claude-skills 1.2.1 ([fc88d02](https://github.com/bffless/skills/commit/fc88d0264e7666c4b1cca0a80b999f534d93b5a2))
+* **main:** release claude-skills 1.2.1 ([8ab70cf](https://github.com/bffless/skills/commit/8ab70cf952d3a3957263e7e75200ce6f64d074df))
+* **main:** release claude-skills 1.2.2 ([ed4cdce](https://github.com/bffless/skills/commit/ed4cdce695fe478ba4ae0b6ca6a7aafc71d11d0b))
+* **main:** release claude-skills 1.2.2 ([b4df1ad](https://github.com/bffless/skills/commit/b4df1ad44d78706569488b8598802e2862290e87))
+* **main:** release claude-skills 1.2.3 ([8001f38](https://github.com/bffless/skills/commit/8001f38cc9830d1e371ef549635ee82a4d7a9b57))
+* **main:** release claude-skills 1.2.3 ([becf818](https://github.com/bffless/skills/commit/becf8184f9c3cdac65ba100e7c98dba1910073ca))
+* **main:** release claude-skills 1.3.0 ([bd129cd](https://github.com/bffless/skills/commit/bd129cde5874f10f8acee711a26184472a4ecf94))
+* **main:** release claude-skills 1.3.0 ([ff0096d](https://github.com/bffless/skills/commit/ff0096d681963db11c82027c498d0b357518d161))
+* **main:** release claude-skills 1.4.0 ([378df60](https://github.com/bffless/skills/commit/378df60d1c35586fb09ade76b7f82cbb1c3a5e8e))
+* **main:** release claude-skills 1.4.0 ([de30794](https://github.com/bffless/skills/commit/de307947d071ef8e7e5abba84e3febfc6fdb55d3))
+* **main:** release claude-skills 1.4.1 ([c9ce474](https://github.com/bffless/skills/commit/c9ce474ce73dadd28e2ea98333bb5ed718aabef5))
+* **main:** release claude-skills 1.4.1 ([c174ea2](https://github.com/bffless/skills/commit/c174ea2b7b0f267cec328bd13ad9a988e10e8bdc))
+* **main:** release claude-skills 1.4.2 ([7cd4f8b](https://github.com/bffless/skills/commit/7cd4f8be06769916d1c557423ca97bc3752ec181))
+* **main:** release claude-skills 1.4.2 ([6317a6c](https://github.com/bffless/skills/commit/6317a6ca6a13c297178b7104d5e324acef4fb73f))
+* **main:** release claude-skills 1.5.0 ([c28eca0](https://github.com/bffless/skills/commit/c28eca0b0816795b6f475f7398313d888c3b3f49))
+* **main:** release claude-skills 1.5.0 ([7011276](https://github.com/bffless/skills/commit/7011276469f859c3886e7c8667c795ec38bf6546))
+* **main:** release claude-skills 1.5.1 ([3f0a193](https://github.com/bffless/skills/commit/3f0a1937aab8833417cd477be9c7983e52bcf248))
+* **main:** release claude-skills 1.5.1 ([1998594](https://github.com/bffless/skills/commit/19985945cb30b8c3a7d0efcb9246f69470a3a53b))
+* **main:** release claude-skills 1.5.2 ([8b7deaa](https://github.com/bffless/skills/commit/8b7deaa59d49dde5f7c0c5d5b82c26093bf678a7))
+* **main:** release claude-skills 1.5.2 ([d7cd874](https://github.com/bffless/skills/commit/d7cd874347c3e481f08af687f29bbb2660608f26))
+* **main:** release claude-skills 1.5.3 ([5ab51a2](https://github.com/bffless/skills/commit/5ab51a29326d667502a616aeb36a287ed1e463f3))
+* **main:** release claude-skills 1.5.3 ([d4d63b6](https://github.com/bffless/skills/commit/d4d63b6266ed24788209f573104bb40f31bbe733))
+* **main:** release claude-skills 1.6.0 ([f4d1fa0](https://github.com/bffless/skills/commit/f4d1fa094771e7808e71ef1c5a0b139c89d87e1b))
+* **main:** release claude-skills 1.6.0 ([5aa1485](https://github.com/bffless/skills/commit/5aa14854fc02f11df1052fb4abdeb5e237c809a7))
+* workflow dispatch ([4775780](https://github.com/bffless/skills/commit/47757809a26943106a91c9fe21ce232b12897f56))
+
 ## [1.6.0](https://github.com/bffless/skills/compare/skills-v1.5.3...skills-v1.6.0) (2026-04-11)
 
 ### Features
