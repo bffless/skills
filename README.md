@@ -60,7 +60,7 @@ This clones the repo and copies the selected skill files into your project so an
 
 ### Local Development
 
-If you're contributing or want to use a local copy with Claude Code:
+To use a local copy with Claude Code (e.g. when contributing):
 
 ```bash
 git clone https://github.com/bffless/skills.git
