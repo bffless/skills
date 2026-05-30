@@ -102,7 +102,7 @@ You can upload multiple artifacts in the same workflow:
 | `branch` | no | auto | Branch name |
 | `is-public` | no | `'true'` | Public visibility |
 | `alias` | no | -- | Deployment alias (e.g., `production`) |
-| `base-path` | no | `/<path>` | Path prefix in zip |
+| `base-path` | no | `/<path>` | URL prefix the alias serves under. See [Base path and URL shape](#base-path-and-url-shape). |
 | `committed-at` | no | auto | ISO 8601 commit timestamp |
 | `description` | no | -- | Human-readable description |
 | `proxy-rule-set-name` | no | -- | Proxy rule set name |
@@ -147,7 +147,38 @@ The action automatically detects:
 - **Commit SHA**: PR head SHA or push SHA
 - **Branch**: PR head ref or push ref
 - **Committed At**: via `git log` (requires `fetch-depth: 0`)
-- **Base Path**: derived from `path` input as `/<path>`
+- **Base Path**: derived from `path` input as `/<path>` — chosen so files appear at the auto-alias root. See [Base path and URL shape](#base-path-and-url-shape) for what this means and when to override.
+
+## Base path and URL shape
+
+`base-path` controls the URL prefix the deployment's alias serves files under. It does **not** rewrite the zip — the action always zips the contents of `path` with the source folder name preserved (e.g. `path: coverage` produces a zip containing `coverage/index.html`). At serve time, the alias's `basePath` is prepended to the incoming request URL before the lookup against stored asset keys.
+
+Combined with the default `base-path: /<path>`, this produces a useful sleight of hand: the prefix on the URL cancels the folder name on the stored path, so files appear at the **auto-alias root**.
+
+Example: `path: coverage`, default `base-path`
+
+| Request URL | `basePath` prepended | Resolves to stored | Result |
+|---|---|---|---|
+| `/index.html` | `coverage/index.html` | `coverage/index.html` | ✅ served |
+| `/coverage/index.html` | `coverage/coverage/index.html` | — | ❌ 404 |
+
+If you'd rather the source folder be **visible** in the URL (e.g. `/coverage/index.html`), set `base-path: /` so the alias's prefix is empty:
+
+| Request URL | `basePath` prepended | Resolves to stored | Result |
+|---|---|---|---|
+| `/coverage/index.html` | `coverage/index.html` | `coverage/index.html` | ✅ served |
+| `/index.html` | `index.html` | — | ❌ 404 |
+
+Rule of thumb:
+
+- **Want files at auto-alias root** (`<auto-alias>/file.png`) → leave `base-path` unset (default).
+- **Want folder visible in URL** (`<auto-alias>/srcfolder/file.png`) → set `base-path: /`.
+- **Want a different sub-path** → set `base-path: /custom-prefix`. The serving lookup will prepend `custom-prefix/` to incoming requests, so this only works if the zip contents are under a folder of the same name (i.e. `path: custom-prefix`).
+
+### Pitfalls
+
+- **Do not use `base-path: ./`** — the backend normalization only strips leading/trailing slashes, so `./` becomes the literal segment `.` and gets prepended to every lookup, breaking all requests. Use `/` instead.
+- Empty / whitespace values are also unsafe; pass exactly `/` to mean "no prefix."
 
 ## PR Comments
 
@@ -183,9 +214,15 @@ permissions:
   pull-requests: write # Required for comments
 ```
 
+### Files 404 at the auto-alias root
+
+If `https://<auto-alias>/<file>` returns 404 but `https://<auto-alias>/<srcfolder>/<file>` works (or vice versa), `base-path` is the wrong shape. See [Base path and URL shape](#base-path-and-url-shape).
+
+Common cause: setting `base-path: ./` instead of `base-path: /`. The backend doesn't normalize `./`, so it gets prepended literally and breaks every lookup.
+
 ### Custom base path
 
-If your app expects to be served from a subdirectory:
+If your app expects to be served from a subdirectory (and the zip contents live under that directory):
 
 ```yaml
 - uses: bffless/upload-artifact@v1
@@ -193,3 +230,5 @@ If your app expects to be served from a subdirectory:
     path: build
     base-path: /docs/build # Served at /docs/build/*
 ```
+
+See [Base path and URL shape](#base-path-and-url-shape) for the full mental model.
