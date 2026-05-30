@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.1](https://github.com/bffless/skills/compare/skills-v1.7.0...skills-v1.7.1) (2026-05-30)
+
+
+### Bug Fixes
+
+* base path skills ([619b4e2](https://github.com/bffless/skills/commit/619b4e26d682c7dfa6bcabc635d2c25c0ce92be7))
+
 ## [1.7.0](https://github.com/bffless/skills/compare/skills-v1.6.0...skills-v1.7.0) (2026-05-26)
 
 
