@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.16.0](https://github.com/bffless/skills/compare/skills-v1.15.0...skills-v1.16.0) (2026-09-08)
+
+
+### Features
+
+* capture-recording skill — a recording at a URL to a Capture bundle over the harness MCP ([2eaf826](https://github.com/bffless/skills/commit/2eaf8267736dcb857807ef554543d04cf9a075ec))
+* capture-recording skill — a recording at a URL to a Capture bundle over the harness MCP ([4df9a2f](https://github.com/bffless/skills/commit/4df9a2f69382a1c5148fc3c6a20f884edc5d9912))
+
 ## [1.15.0](https://github.com/bffless/skills/compare/skills-v1.14.0...skills-v1.15.0) (2026-09-07)
 
 
