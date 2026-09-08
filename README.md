@@ -14,6 +14,7 @@ Originally built as a Claude Code plugin, the skills are plain markdown and also
 | **authorization**     | Global and project roles, API keys, permission model     |
 | **bffless**           | Platform overview, key concepts, and feature summary     |
 | **cache-and-storage** | Cache rules, storage backends, API keys for CI/CD        |
+| **capture-recording** | Start, follow and read a Capture run of a recording at a URL over the harness MCP |
 | **chat**              | AI chat widget/full-page, skills, streaming, persistence |
 | **mcp**               | Build an MCP server on a project: mcp_handler, tools as sibling rules, scopes, OAuth discovery |
 | **pipeline-to-skill** | Generate a project-scoped skill from a BFFless proxy rule set |
