@@ -212,7 +212,7 @@ There are exactly **six roots**. Anything else is not an expression:
 | --- | --- |
 | `request.*` | `body`, `query`, `method`, `path`, `headers`, `ip`, `userAgent` — any other property throws |
 | `steps.<name>.*` | Output of a previous step (`steps.<name>` alone gives the whole object) |
-| `user.*` | `id`, `email`, `role` — `null` when unauthenticated |
+| `user.*` | `id`, `email`, `role` (global: admin/user/member), `groups`, `credential`, `scopes` (app tokens), `projectRole` (owner/admin/contributor/viewer/guest on this project; CE ≥ 0.4.57) — `null` when unauthenticated |
 | `metadata.*` | The raw request metadata `request.*` is a friendly alias onto |
 | `deployment.*` | `owner`, `repo`, `commitSha`, `alias` |
 | `secrets.<NAME>` | Project secrets; a missing one resolves to `null`, it does not throw |
@@ -222,6 +222,7 @@ Built-ins: `now()` (ISO 8601 timestamp — a **string**), `now_ms()` (epoch mill
 On CE older than v0.3.11 `now_ms()` is not a built-in and falls into the literal-string trap
 below — the eight characters `now_ms()` get written instead of a timestamp. Literals pass
 through unchanged: `true`, `false`, `null`, integers, floats, and `"quoted strings"`.
+On CE older than v0.4.57, `user.projectRole` is not available and resolves to `null`.
 
 > ⚠️ **`input.*` was removed in CE v0.2.0** (released 2026-07-12) — use `request.body.*`.
 > This matters more than it looks: an expression whose root isn't one of the six above is
