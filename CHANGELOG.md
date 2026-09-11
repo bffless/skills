@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.16.1](https://github.com/bffless/skills/compare/skills-v1.16.0...skills-v1.16.1) (2026-09-11)
+
+
+### Miscellaneous
+
+* move the capture-recording skill to bffless/apps (reverts [#65](https://github.com/bffless/skills/issues/65)) ([623c799](https://github.com/bffless/skills/commit/623c79972f13f0b62b443e64c1ad8d42f00a4b94))
+* move the capture-recording skill to bffless/apps (reverts [#65](https://github.com/bffless/skills/issues/65)) ([33327d9](https://github.com/bffless/skills/commit/33327d93286299be19c147e2d4a2c460d6909614))
+
+
+### Documentation
+
+* **pipelines:** user.projectRole — the caller's project role in expressions and functions (CE ≥ 0.4.57) ([035a086](https://github.com/bffless/skills/commit/035a086eb5e0be298e137a590ae4478a30af3c8e))
+* **pipelines:** user.projectRole — the caller's project role in expressions and functions (CE ≥ 0.4.57) ([098264f](https://github.com/bffless/skills/commit/098264f0b239f621bf72db2697e5922b51ff09fd))
+
 ## [1.16.0](https://github.com/bffless/skills/compare/skills-v1.15.0...skills-v1.16.0) (2026-09-08)
 
 
