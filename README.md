@@ -10,6 +10,7 @@ Originally built as a Claude Code plugin, the skills are plain markdown and also
 
 | Skill                 | Description                                              |
 | --------------------- | -------------------------------------------------------- |
+| **app-tokens**        | Project-bound scoped bearer tokens for agents/MCP; session exchange |
 | **authentication**    | Cross-domain auth, login relay, cookie sessions          |
 | **authorization**     | Global and project roles, API keys, permission model     |
 | **bffless**           | Platform overview, key concepts, and feature summary     |

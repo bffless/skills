@@ -123,8 +123,12 @@ A rule set can *be* an MCP server: one `mcp_handler` pipeline rule at `/api/mcp`
 
 ## Security Notes
 
-- All proxy targets must use HTTPS
-- BFFless validates targets to prevent SSRF attacks
+- All proxy targets must use HTTPS (plain `http://` to a non-internal host is a 400)
+- BFFless resolves each target's hostname and vets the addresses (`OUTBOUND_URL_GUARD`,
+  CE ≥ 0.4.53). Default `warn`: private targets are allowed and logged. `reject`: rule
+  create/update via UI, REST or `create_proxy_rule`/`update_proxy_rule` answers 400 naming
+  `OUTBOUND_URL_GUARD=reject`, and app installs fail preflight. Exempt: `localhost`,
+  `127.0.0.1`, `*.svc`, `*.svc.cluster.local`
 - Headers like `Host` are rewritten to match target
 - Client IP forwarded via `X-Forwarded-For`
 

@@ -32,7 +32,7 @@ Pipelines provide backend functionality for static sites without writing server 
 | **XML Feed Parse** | `xml_feed_parse` | Fetch and parse RSS/Atom feeds (URL(s) or inline `xml`) into entries |
 | **File Upload** | `file_upload_handler` | Upload files from forms or URLs to storage |
 | **File Serve** | `file_serve_handler` | Serve files from storage with Range request support |
-| **File Delete** | `file_delete` | Delete objects under the project's uploads root by prefix, key, or record |
+| **File Delete** | `file_delete` | Delete objects under the project's uploads root. Exactly one of `prefix` (one folder), `key` (one object), `keys` (explicit set), `prefixes` (many folders, CE ≥ 0.4.58). `keys`/`prefixes` are a static array of templates **or** a single expression string resolving to an array (`prefixes: "steps.cutoff.prefixes"`); an empty array is a no-op. Blank, `/` and `..` are refused; `dryRun: true` reports only. Output `{ deleted, dryRun }` (+ `prefixes: [...]` in prefixes mode); partial failure → `Deleted N object(s) across M prefix(es) but K failed` after every prefix is attempted |
 | **Image Convert** | `image_convert_handler` | Convert images between PNG/JPEG/WebP using sharp |
 | **Video (ffmpeg)** | `ffmpeg_handler` | Server-side video ops on storage objects: probe, extract_audio, slice, concat (CE >= 0.4.25) and frames (CE >= 0.4.35). There is no contact_sheet op: a contact sheet is `frames` (stills at times you supply) with its optional `draw` and `tile` blocks. Opt-in per instance; probe first, check `ops` for the operation you need, and fall back to the browser on `server: false` |
 | **Signed URL** | `signed_url` | Generate time-limited presigned URLs for downloading storage files |
@@ -222,7 +222,9 @@ Built-ins: `now()` (ISO 8601 timestamp — a **string**), `now_ms()` (epoch mill
 On CE older than v0.3.11 `now_ms()` is not a built-in and falls into the literal-string trap
 below — the eight characters `now_ms()` get written instead of a timestamp. Literals pass
 through unchanged: `true`, `false`, `null`, integers, floats, and `"quoted strings"`.
-On CE older than v0.4.57, `user.projectRole` is not available and resolves to `null`.
+`user.projectRole` is **absent** (not `null`) when the caller holds no role on the project,
+and on CE older than v0.4.57; either way `user.projectRole == null` is true, so branch on
+that rather than on a role string. A global `admin` resolves to `owner` on every project.
 
 > ⚠️ **`input.*` was removed in CE v0.2.0** (released 2026-07-12) — use `request.body.*`.
 > This matters more than it looks: an expression whose root isn't one of the six above is
