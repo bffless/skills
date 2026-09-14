@@ -224,6 +224,15 @@ happened outside git (a dashboard edit, a bad manual sync) and you want the serv
   and no single `method`) is legal live state but ambiguous to sync/replay. Consolidate to
   one `any.rule.yaml` with a combined `methods:` list, or give each rule an explicit `method:`.
 
+**`rules push` prints `warning: Rule "GET /api/*": target https://x — x resolves to a non-public address …`?**
+- CE ≥ 0.4.55 DNS-resolves every proxy target on push/import/copy and vets the addresses
+  (`OUTBOUND_URL_GUARD`, default `warn`). Under `warn` the push still succeeds and the line
+  is informational. Under `reject` the push is one `400` listing every offending rule and
+  **nothing is written** — fix the target or, for a legitimately private upstream, ask the
+  operator to keep `warn`. A name that does not resolve, or takes > 3 s to, is treated the
+  same way. `localhost`, `127.0.0.1`, `*.svc`, `*.svc.cluster.local` are exempt. Plain
+  `http://` to a non-internal host is still an unconditional 400.
+
 **Leftover PR-preview rule sets/aliases?**
 - Check for `<set>-pr-<N>` sets after a PR is force-closed or cleanup was disabled mid-PR;
   delete the alias before the rule set (it 409s while attached).

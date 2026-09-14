@@ -15,7 +15,8 @@ A self-hosted BFFless install has **one primary domain** (e.g., `foo.com` — th
 
 All of these share `.foo.com` as a parent, so the SuperTokens session cookie (`sAccessToken`) reaches every one of them automatically. There is no `bffless_access` cookie in this mode — the session is always validated against `sAccessToken`. (BFFless multi-tenant hosting at `*.workspace.bffless.app` is mechanically the same setup, with `workspace.bffless.app` playing the role of the primary domain.)
 
-When a user hits a private deployment on the primary domain and isn't authenticated:
+When a user hits a private deployment on the primary domain and isn't authenticated
+(**navigations only** — `Sec-Fetch-Mode: navigate` or `Accept: text/html`; see below):
 
 1. Backend redirects to `https://admin.foo.com/login?redirect=<original-path>&tryRefresh=true`
 2. The login page tries a session refresh first (the `tryRefresh` param), in case the cookie is just expired
@@ -87,6 +88,22 @@ All auth endpoints are available at `/_bffless/auth/*` on any domain served by B
 | Expired | `401` | `"try refresh token"` | Call `/_bffless/auth/refresh`, then retry session |
 
 **Common bug**: writing `if (res.ok) return res.json()` and treating guests as authenticated. The body's `authenticated` field is the source of truth, not the HTTP status.
+
+### API requests are never redirected (CE ≥ 0.4.55)
+
+One classifier decides: a request is a **navigation** only with `Sec-Fetch-Mode: navigate` or `Accept: text/html`. Everything else — a `fetch()` with no `Accept` or `*/*`, curl, any bearer — is an **API request** and gets JSON, never a `302`:
+
+| Situation | Navigation | API request |
+| --- | --- | --- |
+| Expired session cookie | 302 admin login `?tryRefresh=true` | `401 { "message": "try refresh token" }` |
+| No session on a private deployment / `auth_required` rule | 302 admin login | `401 { "message": "unauthorised" }` (+ `WWW-Authenticate: Bearer resource_metadata="…"` on domain hosts) |
+| Email not verified | 302 `/verify-email` | `403 { "error": "EMAIL_NOT_VERIFIED" }` |
+
+Older releases sometimes answered a `fetch()` with the redirect; a client that followed it into the login HTML must handle the `401` instead: refresh, then build the login URL itself (below).
+
+### App tokens
+
+A third credential besides the session and the API key: `Authorization: Bearer bfat_…`, bound to one project, scope-checked per rule, exchangeable for a session via `POST /api/auth/session/from-app-token` (`auth:session` scope). See the **app-tokens** skill. Precedence: `X-API-Key` → app token → session cookie → custom-domain cookie.
 
 ### Session Check Priority
 

@@ -36,6 +36,8 @@ Users can receive project access from multiple sources:
 
 ## API Keys
 
+(App tokens — project-bound, scoped bearer credentials for agents and MCP connectors — are a separate credential; see the **app-tokens** skill. A token never elevates: the member's permission on that project ∩ the token's scopes.)
+
 Two types of API keys for automation:
 
 - **Global keys**: Workspace-wide access, use the creator's permissions
