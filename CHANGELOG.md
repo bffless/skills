@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.17.0](https://github.com/bffless/skills/compare/skills-v1.16.0...skills-v1.17.0) (2026-09-14)
+
+
+### Features
+
+* app-tokens skill, OUTBOUND_URL_GUARD, 401-vs-302; fix mcp/pipelines drift ([07dbeac](https://github.com/bffless/skills/commit/07dbeaceaba8d38f0bb652013c74a90bf1f8fb8b))
+* app-tokens skill; OUTBOUND_URL_GUARD, 401-vs-302 and app-token pointers ([31339ef](https://github.com/bffless/skills/commit/31339ef30a525d74cdfa6de8ae1e869d26d30325))
+
+
+### Bug Fixes
+
+* **mcp,pipelines:** external_proxy siblings are supported; projectRole is absent, not null ([469f8f3](https://github.com/bffless/skills/commit/469f8f3f0cbbf5fb8909418f0a9cb0c02264a436))
+
+
+### Miscellaneous
+
+* move the capture-recording skill to bffless/apps (reverts [#65](https://github.com/bffless/skills/issues/65)) ([623c799](https://github.com/bffless/skills/commit/623c79972f13f0b62b443e64c1ad8d42f00a4b94))
+* move the capture-recording skill to bffless/apps (reverts [#65](https://github.com/bffless/skills/issues/65)) ([33327d9](https://github.com/bffless/skills/commit/33327d93286299be19c147e2d4a2c460d6909614))
+
+
+### Documentation
+
+* **pipelines:** user.projectRole — the caller's project role in expressions and functions (CE ≥ 0.4.57) ([035a086](https://github.com/bffless/skills/commit/035a086eb5e0be298e137a590ae4478a30af3c8e))
+* **pipelines:** user.projectRole — the caller's project role in expressions and functions (CE ≥ 0.4.57) ([098264f](https://github.com/bffless/skills/commit/098264f0b239f621bf72db2697e5922b51ff09fd))
+
 ## [1.16.0](https://github.com/bffless/skills/compare/skills-v1.15.0...skills-v1.16.0) (2026-09-08)
 
 
