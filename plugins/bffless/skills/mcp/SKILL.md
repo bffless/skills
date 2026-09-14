@@ -243,7 +243,8 @@ path keeps winning, so the copy keeps working until you do).
 
 **claude.ai**: Settings → Connectors → *Add custom connector*, URL `https://<host>/api/mcp`.
 It runs the OAuth flow; the person narrows scopes on the consent page; revoke later under
-**User Settings → App Tokens** in the admin UI.
+**User Settings → App Tokens** in the admin UI. Minting a token by hand for an agent, and
+exchanging one for a cookie session, is the **app-tokens** skill.
 
 **Claude Code, OAuth** — commit a `.mcp.json` with no secret in it, then `/mcp` to sign in:
 
@@ -302,10 +303,14 @@ app's set and `apps/workflow/docs/writing-an-implementation.md` in `bffless/apps
 
 1. **The tool's gate is on the sibling, not the endpoint.** Roles/scopes on the endpoint gate
    `tools/list` for everyone; put them on each tool rule.
-2. **A tool's sibling must be a pipeline rule in a set attached to the same alias.** A proxy
-   (`targetUrl: https://…`) sibling fails with `unsupported rule type`; a sibling that is
-   itself an `mcp_handler` fails with `MCP_RECURSION`; no match → `<tool> is declared but no
-   rule answers <path>`. The admin UI's "answered by" hint is advisory (another attached set
+2. **A tool's sibling must be a rule in a set attached to the same alias.** A pipeline
+   sibling runs in-process as the caller. An `external_proxy` sibling (`targetUrl: https://…`)
+   is forwarded with the headers **that rule's own** `forwardCookies` / `authTransform` /
+   `headerConfig` build — cookies off, `authorization` stripped by default — so an upstream
+   that needs the bearer app token needs `authorization` in the sibling's
+   `headerConfig.forward`. Only `internal_rewrite` siblings fail with `unsupported rule
+   type`; a sibling that is itself an `mcp_handler` fails with `MCP_RECURSION`; no match →
+   `<tool> is declared but no rule answers <path>`. The admin UI's "answered by" hint is advisory (another attached set
    may answer), so a push is never blocked — probe `tools/call`.
 3. **`rule.method` is GET or POST only.** Arguments go as query (GET) or body (POST); a tool
    rule at `…/post/rule.yaml` answers POST — match them.
