@@ -35,26 +35,24 @@ just Claude Code. The output lives in the *app's* repo; this generator is platfo
      marked as inferred.
 4. **Write the standard auth section** — the *pattern* is identical for every BFFless app, but the
    concrete values are environment-specific. **Discover them; never hardcode `j5s-dev` or `j5s.dev`**
-   (those are just the reference platform's MCP-entry name and domain):
+   (those are just the reference platform's values):
    - **Credential** — a BFFless API key for the project, sent as `X-API-Key`. Source it
-     runtime-neutrally; **do not assume the agent is Claude Code**:
+     runtime-neutrally; **do not assume the agent is Claude Code**, and never read another tool's
+     config files (e.g. an MCP server config) to find a key:
      1. Primary: the `BFFLESS_API_KEY` environment variable (`-H "X-API-Key: $BFFLESS_API_KEY"`) —
         works in any agent runtime (Claude Code, Copilot, Gemini CLI, Codex, …).
-     2. Convenience: if a BFFless MCP is already configured, reuse its key so nothing new is stored.
-        Read it from that runtime's MCP config — on Claude Code, `~/.claude.json`, selecting the
-        `mcpServers` entry **by its `url`** (the admin MCP endpoint `https://admin.<platform-domain>/mcp`),
-        since the entry *name* is user-chosen. Other runtimes keep MCP config elsewhere — give the
-        Claude path as one labelled example, not the only path.
-     Derive `<platform-domain>` from the admin MCP url's host (or the app's deployment).
+     2. Fallback: the bffless CLI credential store — `$(npx bffless auth token --api-url
+        https://admin.<platform-domain>)`. The operator runs `npx bffless login` once per
+        machine + instance; the skill only reads the token at call time.
+     Derive `<platform-domain>` from the app's deployment (or the admin URL the operator logged into).
    - **App base URL** — the alias the rule set is attached to on that platform, e.g.
      `https://<app-alias>.<platform-domain>`.
    - **Bake the concrete discovered values** into the generated skill: lead with the env-var path
-     (`$BFFLESS_API_KEY`); for the MCP-reuse convenience, emit a `python3` one-liner that selects the
-     entry **by `url`** (matching the admin MCP url), not by name; and make requests target the app's
-     real base URL. Do not emit the literal `j5s-dev`/`j5s.dev` unless it is genuinely this
-     environment's value.
+     (`$BFFLESS_API_KEY`), then the `bffless auth token --api-url <admin url>` fallback with this
+     environment's real admin URL; and make requests target the app's real base URL. Do not emit
+     the literal `j5s-dev`/`j5s.dev` unless it is genuinely this environment's value.
    - Identity = project owner. The skill itself stores nothing and never writes the key value into a
-     file (the env var / MCP config is the operator's, not the skill's).
+     file (the env var / CLI credential store is the operator's, not the skill's).
    - Note the gate: an `X-API-Key` is accepted on rules that allow it (e.g. an `allowApiKey: true`
      validator); rules without it fall back to cookie/session auth. Flag any endpoint a key cannot reach.
 5. **Assemble** sections: front-matter (`name: <app>-api`), intro, Auth, Discovery, one recipe
