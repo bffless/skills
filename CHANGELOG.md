@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.17.1](https://github.com/bffless/skills/compare/skills-v1.17.0...skills-v1.17.1) (2026-09-15)
+
+
+### Bug Fixes
+
+* **pipeline-to-skill:** source API key from CLI credential store, not MCP config ([caeefd1](https://github.com/bffless/skills/commit/caeefd1d51a26aee7db58da32ae9369ec3fb6c09))
+* **pipeline-to-skill:** source API key from CLI credential store, not MCP config ([f826d15](https://github.com/bffless/skills/commit/f826d159aa1baa04e5f019bbf7e813d82cc196bb))
+
 ## [1.17.0](https://github.com/bffless/skills/compare/skills-v1.16.0...skills-v1.17.0) (2026-09-14)
 
 
